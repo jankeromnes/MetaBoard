@@ -1,3 +1,147 @@
 <!doctype html>
-<meta charset="utf-8">
-<title> MetaBoard </title>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title> MetaBoard </title>
+    <link href="./css/app.css" rel="stylesheet">
+    <link href="./css/boards.css" rel="stylesheet">
+    <link href="./css/shapes.css" rel="stylesheet">
+  </head>
+
+  <body>
+
+    <div class="menu">
+      <a class="menu-item" href="#new">New game</a>
+      <div class="growing hidden-xs menu-item">🎲 MetaBoard</div>
+      <a class="menu-item" href="#saved">Saved games</a>
+    </div>
+
+    <div class="views">
+
+      <div class="view visible" id="new">
+        <a href="#catan">Catan</a>,
+        <a href="#chess">Chess</a>,
+        <a href="#go">Go</a>
+      </div>
+
+      <div class="view" id="catan">
+        <div class="growing square">
+          <div class="square-body hexagon">
+            <div class="hexagon-horizontal board-catan"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="view" id="chess">
+        <div class="growing square">
+          <div class="square-body board-chess">
+            <div class="row">
+              <div class="tile">
+                <span class="white piece">♜</span>
+              </div>
+              <div class="tile">
+                <span class="white piece">♞</span>
+              </div>
+              <div class="tile">
+                <span class="white piece">♝</span>
+              </div>
+              <div class="tile">
+                <span class="white piece">♛</span>
+              </div>
+            </div>
+            <div class="row">
+              <div class="tile">
+                <span class="white piece">♟</span>
+              </div>
+              <div class="tile">
+                <span class="white piece">♟</span>
+              </div>
+              <div class="tile">
+                <span class="white piece">♟</span>
+              </div>
+              <div class="tile">
+                <span class="white piece">♟</span>
+              </div>
+            </div>
+            <div class="row">
+              <div class="tile">
+                <span class="black piece">♟</span>
+              </div>
+              <div class="tile">
+                <span class="black piece">♟</span>
+              </div>
+              <div class="tile">
+                <span class="black piece">♟</span>
+              </div>
+              <div class="tile">
+                <span class="black piece">♟</span>
+              </div>
+            </div>
+            <div class="row">
+              <div class="tile">
+                <span class="black piece">♜</span>
+              </div>
+              <div class="tile">
+                <span class="black piece">♞</span>
+              </div>
+              <div class="tile">
+                <span class="black piece">♝</span>
+              </div>
+              <div class="tile">
+                <span class="black piece">♛</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="view" id="go">
+        <div class="growing square">
+          <div class="square-body board-go">
+            <div class="row">
+              <div class="tile"></div>
+              <div class="tile"></div>
+              <div class="tile"></div>
+              <div class="tile"></div>
+            </div>
+            <div class="row">
+              <div class="tile"></div>
+              <div class="tile"></div>
+              <div class="tile">
+                <span class="black stone"></span>
+              </div>
+              <div class="tile"></div>
+            </div>
+            <div class="row">
+              <div class="tile"></div>
+              <div class="tile">
+                <span class="black stone"></span>
+              </div>
+              <div class="tile">
+                <span class="white stone"></span>
+              </div>
+              <div class="tile"></div>
+            </div>
+            <div class="row">
+              <div class="tile"></div>
+              <div class="tile"></div>
+              <div class="tile"></div>
+              <div class="tile"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="view" id="saved">
+        Saved games
+      </div>
+
+    </div>
+
+    <script src="./js/app.js"></script>
+    <script src="./js/boards.js"></script>
+  </body>
+</html>

@@ -1,0 +1,69 @@
+/* Copyright © 2016 Jan Keromnes. All rights reserved.
+ * The following code is covered by the MIT license. */
+
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  font-family: "Open Sans", Arial, sans-serif;
+}
+
+.growing {
+  flex-grow: 1;
+}
+
+.menu {
+  display: flex;
+  flex-direction: row;
+  background: yellow;
+}
+
+.menu-item {
+  padding: 10px;
+  text-align: center;
+}
+
+.views {
+  display: flex;
+  flex-direction: row;
+  flex-grow: 1;
+}
+
+.view {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  flex-grow: 1;
+  overflow: hidden;
+}
+
+.view:not(.visible) {
+  display: none;
+}
+
+
+/* Overrides for narrower screens (mobile) */
+@media (max-width: 767px) {
+
+  .hidden-xs {
+    display: none;
+  }
+
+  .menu {
+    order: 1;
+  }
+
+  .menu-item {
+    flex-grow: 1;
+  }
+
+  .views {
+    flex-direction: column;
+  }
+
+}

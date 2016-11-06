@@ -1,0 +1,134 @@
+/* Copyright © 2016 Jan Keromnes. All rights reserved.
+ * The following code is covered by the MIT license. */
+
+.row {
+  flex-basis: 0;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: row;
+}
+
+.tile {
+  position: relative;
+  flex-basis: 0;
+  flex-grow: 1;
+}
+
+.board-chess {
+  background: sienna;
+  display: flex;
+  flex-direction: column-reverse;
+  counter-reset: row;
+}
+
+.board-chess > .row {
+  counter-increment: row;
+  counter-reset: column;
+}
+
+.board-chess > .row > .tile {
+  counter-increment: column;
+}
+
+.board-chess > .row:nth-of-type(even) > .tile:nth-of-type(odd),
+.board-chess > .row:nth-of-type(odd) > .tile:nth-of-type(even) {
+  background: wheat;
+}
+
+.board-chess:before, .board-chess:after,
+.board-chess > .row:before, .board-chess > .row:after,
+.board-chess > .row:first-of-type > .tile:before,
+.board-chess > .row:last-of-type > .tile:after {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: wheat;
+}
+
+.board-chess:before, .board-chess:after {
+  content: "";
+  flex-basis: 0;
+  flex-grow: 0.5;
+}
+
+.board-chess > .row:before, .board-chess > .row:after {
+  content: counter(row);
+  flex-basis: 0;
+  flex-grow: 0.5;
+}
+
+.board-chess > .row:first-of-type > .tile:before,
+.board-chess > .row:last-of-type > .tile:after {
+  content: counter(column, upper-alpha);
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 50%;
+}
+
+.board-chess > .row:first-of-type > .tile:before {
+  top: 100%;
+}
+
+.board-chess > .row:last-of-type > .tile:after {
+  top: -50%;
+}
+
+.board-chess .piece {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+  height: 100%;
+}
+
+.board-chess .white.piece {
+  color: white;
+  -webkit-text-stroke: 1px black;
+}
+
+.board-chess .black.piece {
+  color: black;
+  -webkit-text-stroke: 0.5px white;
+}
+
+.board-go {
+  background: navajowhite;
+  display: flex;
+  flex-direction: column;
+}
+
+.board-go > .row > .tile:after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+}
+
+.board-go > .row > .tile:not(:last-of-type):after {
+  border-top: 1px solid black;
+}
+
+.board-go > .row:not(:last-of-type) > .tile:after {
+  border-left: 1px solid black;
+}
+
+.board-go .stone {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  border-radius: 100%;
+  box-sizing: border-box;
+  z-index: 1;
+}
+
+.board-go .black.stone {
+  background-color: black;
+}
+
+.board-go .white.stone {
+  border: 1px solid black;
+  background-color: white;
+}
