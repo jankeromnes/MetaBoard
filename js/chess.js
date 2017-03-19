@@ -113,9 +113,9 @@ Chess.prototype.render = function (viewElement) {
     var rowElement = document.createElement('div');
     rowElement.classList.add('row');
     for (var y = 0; y < this.rows[x].length; y++) {
-      var piece = this.rows[x][y];
       var tileElement = document.createElement('div');
       tileElement.classList.add('tile');
+      var piece = this.rows[x][y];
       if (piece) {
         var pieceElement = document.createElement('span');
         pieceElement.classList.add(piece.white ? 'white' : 'black');
