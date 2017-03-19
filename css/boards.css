@@ -1,6 +1,13 @@
 /* Copyright © 2016 Jan Keromnes. All rights reserved.
  * The following code is covered by the MIT license. */
 
+.board {
+  display: flex;
+  flex-direction: column;
+  cursor: default;
+  user-select: none;
+}
+
 .row {
   flex-basis: 0;
   flex-grow: 1;
@@ -14,9 +21,13 @@
   flex-grow: 1;
 }
 
+.tile:hover, .tile.playable {
+  outline: 2px solid yellow;
+  outline-offset: -2px;
+}
+
 .board-chess {
   background: sienna;
-  display: flex;
   flex-direction: column-reverse;
   counter-reset: row;
 }
@@ -93,8 +104,6 @@
 
 .board-go {
   background: wheat;
-  display: flex;
-  flex-direction: column;
 }
 
 .board-go > .row > .tile:after {
