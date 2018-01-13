@@ -26,6 +26,10 @@
   outline-offset: -2px;
 }
 
+.board-catan {
+  background-color: lightblue;
+}
+
 .board-chess {
   background: sienna;
   flex-direction: column-reverse;
@@ -46,30 +50,30 @@
   background: wheat;
 }
 
-.board-chess:before, .board-chess:after,
-.board-chess > .row:before, .board-chess > .row:after,
-.board-chess > .row:first-of-type > .tile:before,
-.board-chess > .row:last-of-type > .tile:after {
+.board-chess::before, .board-chess::after,
+.board-chess > .row::before, .board-chess > .row::after,
+.board-chess > .row:first-of-type > .tile::before,
+.board-chess > .row:last-of-type > .tile::after {
   display: flex;
   align-items: center;
   justify-content: center;
   color: wheat;
 }
 
-.board-chess:before, .board-chess:after {
+.board-chess::before, .board-chess::after {
   content: "";
   flex-basis: 0;
   flex-grow: 0.5;
 }
 
-.board-chess > .row:before, .board-chess > .row:after {
+.board-chess > .row::before, .board-chess > .row::after {
   content: counter(row);
   flex-basis: 0;
   flex-grow: 0.5;
 }
 
-.board-chess > .row:first-of-type > .tile:before,
-.board-chess > .row:last-of-type > .tile:after {
+.board-chess > .row:first-of-type > .tile::before,
+.board-chess > .row:last-of-type > .tile::after {
   content: counter(column, upper-alpha);
   position: absolute;
   left: 0;
@@ -77,11 +81,11 @@
   height: 50%;
 }
 
-.board-chess > .row:first-of-type > .tile:before {
+.board-chess > .row:first-of-type > .tile::before {
   top: 100%;
 }
 
-.board-chess > .row:last-of-type > .tile:after {
+.board-chess > .row:last-of-type > .tile::after {
   top: -50%;
 }
 
@@ -106,7 +110,7 @@
   background: wheat;
 }
 
-.board-go > .row > .tile:after {
+.board-go > .row > .tile::after {
   content: "";
   position: absolute;
   top: 50%;
@@ -115,12 +119,23 @@
   height: 100%;
 }
 
-.board-go > .row > .tile:not(:last-of-type):after {
+.board-go > .row > .tile:not(:last-of-type)::after {
   border-top: 1px solid black;
 }
 
-.board-go > .row:not(:last-of-type) > .tile:after {
+.board-go > .row:not(:last-of-type) > .tile::after {
   border-left: 1px solid black;
+}
+
+.board-go > .row:nth-of-type(6n+4) > .tile:nth-of-type(6n+4)::before {
+  content: "";
+  position: absolute;
+  background-color: black;
+  border-radius: 100%;
+  top: 40%;
+  left: 40%;
+  width: calc(20% + 0.5px);
+  height: calc(20% + 0.5px);
 }
 
 .board-go .stone {
@@ -141,6 +156,30 @@
   background-color: white;
 }
 
-.board-catan {
-  background-color: lightblue;
+.board-scrabble .tile {
+  background-color: green;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 1px;
+}
+
+.board-scrabble .tile:not(:empty), .scrabble-letter {
+  background-color: moccasin;
+}
+
+.board-scrabble .double-letter:empty {
+  background-color: lightskyblue;
+}
+
+.board-scrabble .double-word:empty {
+  background-color: lightsalmon;
+}
+
+.board-scrabble .triple-letter:empty {
+  background-color: dodgerblue;
+}
+
+.board-scrabble .triple-word:empty {
+  background-color: red;
 }

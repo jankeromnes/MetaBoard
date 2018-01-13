@@ -35,9 +35,7 @@ body {
 
 .view {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: row;
+  flex-direction: column;
   flex-basis: 0;
   flex-grow: 1;
   overflow: hidden;
@@ -47,16 +45,25 @@ body {
   display: none;
 }
 
+.view-body {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  flex-grow: 1;
+}
+
+.view-menu {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
 
 /* Overrides for narrower screens (mobile) */
-@media (max-width: 767px) {
 
+@media (max-width: 767px) {
   .hidden-xs {
     display: none;
-  }
-
-  .menu {
-    order: 1;
   }
 
   .menu-item {
@@ -66,5 +73,23 @@ body {
   .views {
     flex-direction: column;
   }
+}
 
+/* Animations */
+
+.spin {
+  animation-name: spin;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+  transform-origin: 50% 50%;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }

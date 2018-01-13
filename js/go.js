@@ -1,19 +1,23 @@
 // Copyright © 2016 Jan Keromnes. All rights reserved.
 // The following code is covered by the MIT license.
 
-function Go (board) {
+function Go (board, players) {
+  var self = this;
   this.board = this.Boards[board] || this.Boards['19x19'];
-  this.blacks = [];
-  this.whites = [];
+  this.players = (players || ['human', 'bot']).map(function (player) {
+    var workerUrl = self.Players[player];
+    return workerUrl ? new Worker(workerUrl) : null;
+  });
+  this.stones = [];
 }
 
 window.Go = Go;
 
-var link = document.querySelector('a[href="#go"]');
-link.addEventListener('click', function () {
+window.addEventListener('hashchange', function () {
+  if (window.location.hash !== '#go') return;
+
   var game = new Go();
-  var view = document.querySelector('#go');
-  game.render(view);
+  game.render(document.querySelector('#go'));
 });
 
 Go.prototype.Boards = {
@@ -31,6 +35,16 @@ Go.prototype.Boards = {
   }
 };
 
+Go.prototype.Colors = [
+  'black',
+  'white'
+];
+
+Go.prototype.Players = {
+  'human': null,
+  'bot': '/js/workers/go-bot.js'
+};
+
 Go.prototype.onclick = function (event) {
   var tileElement = event.target;
   if (!tileElement.classList.contains('tile')) {
@@ -39,17 +53,16 @@ Go.prototype.onclick = function (event) {
   if (tileElement.firstChild) {
     return;
   }
-  // play move
+  this.play(tileElement);
+};
+
+Go.prototype.play = function (tileElement) { // TODO rules.play(this.stones, x, y), this.render(.board-go parent)
   var stone = {
-    black: !((this.whites.length + this.blacks.length) % 2)
+    color: this.stones.length % this.players.length
   };
-  if (stone.black) {
-    this.blacks.push(stone);
-  } else {
-    this.whites.push(stone);
-  }
+  this.stones.push(stone);
   var stoneElement = document.createElement('span');
-  stoneElement.classList.add(stone.black ? 'black' : 'white');
+  stoneElement.classList.add(this.Colors[stone.color]);
   stoneElement.classList.add('stone');
   tileElement.appendChild(stoneElement);
 };
@@ -67,6 +80,8 @@ Go.prototype.render = function (viewElement) {
     for (var y = 0; y < this.board.Columns; y++) {
       var tileElement = document.createElement('div');
       tileElement.classList.add('tile');
+      tileElement.dataset.x = x;
+      tileElement.dataset.y = y;
       rowElement.appendChild(tileElement);
     }
     boardFragment.appendChild(rowElement);

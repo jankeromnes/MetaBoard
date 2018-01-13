@@ -13,8 +13,9 @@ function Chess (board) {
 
 window.Chess = Chess;
 
-var link = document.querySelector('a[href="#chess"]');
-link.addEventListener('click', function () {
+window.addEventListener('hashchange', function () {
+  if (window.location.hash !== '#chess') return;
+
   var game = new Chess();
   game.render(document.querySelector('#chess'));
 });
@@ -57,10 +58,10 @@ Chess.prototype.Boards = {
       }
     }
   },
-  'keragbe': {
+  /*'keragbe': {
     Layout: '',
     Pieces: {}
-  }
+  }*/
 };
 
 Chess.prototype.initialize = function () {

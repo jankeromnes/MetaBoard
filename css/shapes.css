@@ -3,10 +3,10 @@
 
 .square {
   position: relative;
-  max-width: 80vh;
+  max-width: 75vh; /* was 80vh */
 }
 
-.square:after {
+.square::after {
   content: "";
   display: block;
   padding-bottom: 100%;
@@ -35,7 +35,7 @@
   width: calc(100% * 0.57735);
 }
 
-.hexagon-horizontal:before, .hexagon-horizontal:after {
+.hexagon-horizontal::before, .hexagon-horizontal::after {
   top: 0;
   right: calc((100% / 2) - ((100% * 0.57735) / 2));
 }
@@ -45,7 +45,7 @@
   width: 100%;
 }
 
-.hexagon-vertical:before, .hexagon-vertical:after {
+.hexagon-vertical::before, .hexagon-vertical::after {
   top: calc((100% / 2) - ((100% * 0.57735) / 2));
   right: 0;
 }
@@ -54,7 +54,7 @@
   display: inline-block;
 }
 
-.hexagon-horizontal:before, .hexagon-vertical:before {
+.hexagon-horizontal::before, .hexagon-vertical::before {
   position: absolute;
   background-color: inherit;
   height: inherit;
@@ -63,7 +63,7 @@
   transform: rotateZ(60deg);
 }
 
-.hexagon-horizontal:after, .hexagon-vertical:after {
+.hexagon-horizontal::after, .hexagon-vertical::after {
   position: absolute;
   background-color: inherit;
   height: inherit;
