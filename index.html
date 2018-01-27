@@ -15,7 +15,7 @@
 
     <div class="menu">
       <a class="menu-item" href="#new">New game</a>
-      <div class="growing menu-item">🎲 <span class="hidden-xs">MetaBoard</span></div>
+      <div class="growing menu-item">🎲<span class="hidden-xs">&nbsp;MetaBoard</span></div>
       <a class="menu-item" href="#saved">Saved games</a>
     </div>
 
@@ -41,7 +41,7 @@
         </div>
         <div class="view-menu">
           <button class="menu-item">↶ undo</button>
-          <div class="menu-item">human1 …</div>
+          <div class="growing menu-item">p1…</div>
           <button class="menu-item">auto <span class="spin">↷</span></button>
         </div>
       </div>
@@ -55,7 +55,7 @@
         </div>
         <div class="view-menu">
           <button class="menu-item">↶ undo</button>
-          <div class="menu-item"><span style="-webkit-text-stroke: 0.5px black; color: white">♞</span> <span>human</span> …</div>
+          <div class="growing menu-item"><span style="-webkit-text-stroke: 0.5px black; color: white">♞</span><span>…</span></div>
           <button class="menu-item">auto <span class="spin">↷</span></button>
         </div>
       </div>
@@ -69,7 +69,7 @@
         </div>
         <div class="view-menu">
           <button class="menu-item">↶ undo</button>
-          <div class="menu-item"><span style="-webkit-text-stroke: 1px black; color: black">⬤</span> <span>human</span> …</div>
+          <div class="growing menu-item"><span style="-webkit-text-stroke: 1px black; color: black">⬤</span> <span>…</span></div>
           <button class="menu-item">auto <span class="spin">↷</span></button>
         </div>
       </div>
@@ -83,15 +83,57 @@
         </div>
         <div class="view-menu">
           <button class="menu-item">↶ undo</button>
-          <div class="menu-item">human1 …</div>
+          <div class="growing menu-item" style="display:flex;flex-direction:row">
+            <div class="square scrabble-letter">
+              <div class="square-body tile">A</div>
+            </div>
+            <div class="square scrabble-letter">
+              <div class="square-body tile">B</div>
+            </div>
+            <div class="square scrabble-letter">
+              <div class="square-body tile">C</div>
+            </div>
+            <div class="square scrabble-letter">
+              <div class="square-body tile">D</div>
+            </div>
+            <div class="square scrabble-letter">
+              <div class="square-body tile">E</div>
+            </div>
+            <div class="square scrabble-letter">
+              <div class="square-body tile">F</div>
+            </div>
+            <div class="square scrabble-letter">
+              <div class="square-body tile">G</div>
+            </div>
+          </div>
           <button class="menu-item">auto <span class="spin">↷</span></button>
         </div>
       </div>
 
       <div class="view" id="splendor">
         <div class="view-body">
+          <div class="growing square">
+            <div class="square-body board board-splendor">
+              <div class="splendor-decks">
+                <div class="splendor-nobles"></div>
+                <div class="splendor-cards"></div>
+              </div>
+              <div class="splendor-tokens"></div>
+            </div>
+          </div>
         </div>
         <div class="view-menu">
+          <div class="menu-item">
+          </div>
+        </div>
+        <div class="view-menu">
+          <button class="menu-item">↶ undo</button>
+          <div class="growing menu-item splendor-points">0</div>
+          <div class="growing menu-item splendor-value">
+            <div class="value-card emerald">3</div>
+            <div class="value-token emerald">2</div>
+          </div>
+          <button class="menu-item">auto <span class="spin">↷</span></button>
         </div>
       </div>
 

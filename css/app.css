@@ -17,14 +17,19 @@ body {
 }
 
 .menu {
-  display: flex;
-  flex-direction: row;
   background: yellow;
 }
 
-.menu-item {
-  padding: 10px;
-  text-align: center;
+.menu, .view-menu {
+  height: 6vh;
+  padding: 0 2vh;
+}
+
+.menu, .view-menu, .menu-item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
 }
 
 .views {
@@ -53,21 +58,11 @@ body {
   flex-grow: 1;
 }
 
-.view-menu {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-}
-
 /* Overrides for narrower screens (mobile) */
 
 @media (max-width: 767px) {
   .hidden-xs {
     display: none;
-  }
-
-  .menu-item {
-    flex-grow: 1;
   }
 
   .views {
