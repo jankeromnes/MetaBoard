@@ -13,17 +13,20 @@
   flex-grow: 1;
   display: flex;
   flex-direction: row;
+  min-height: 0;
 }
 
 .tile {
   position: relative;
   flex-basis: 0;
   flex-grow: 1;
+  min-width: 0;
 }
 
 .tile:hover, .tile.playable {
-  outline: 2px solid yellow;
-  outline-offset: -2px;
+  /*outline: 2px solid yellow;
+  outline-offset: -2px;*/
+  box-shadow: inset 0px 0px 0px 2px yellow;
 }
 
 .board-catan {
@@ -165,6 +168,7 @@
 }
 
 .scrabble-letter {
+  border: 1px solid black;
   height: calc(1em + 4vmin);
   width: calc(1em + 4vmin);
   margin: 2px;
