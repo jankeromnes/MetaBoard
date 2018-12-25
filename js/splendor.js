@@ -3,6 +3,9 @@
 
 function Splendor (board) {
   this.board = this.Boards[board] || this.Boards['2p'];
+  this.tokens = {};
+  this.nobles = [];
+  this.initialize();
 }
 
 window.Splendor = Splendor;
@@ -30,9 +33,83 @@ Splendor.prototype.Boards['2p'] = {
     Level2: 30,
     Level3: 20
   },
-  Nobles: {
-    length: 10
-  },
+  Nobles: [
+    {
+      Points: 3,
+      Requirements: {
+        Diamond: 4,
+        Sapphire: 4
+      }
+    },
+    {
+      Points: 3,
+      Requirements: {
+        Diamond: 3,
+        Onyx: 3,
+        Ruby: 3
+      }
+    },
+    {
+      Points: 3,
+      Requirements: {
+        Emerald: 3,
+        Onyx: 3,
+        Ruby: 3
+      }
+    },
+    {
+      Points: 3,
+      Requirements: {
+        Emerald: 4,
+        Ruby: 4
+      }
+    },
+    {
+      Points: 3,
+      Requirements: {
+        Emerald: 4,
+        Sapphire: 4
+      }
+    },
+    {
+      Points: 3,
+      Requirements: {
+        Onyx: 4,
+        Ruby: 4
+      }
+    },
+    {
+      Points: 3,
+      Requirements: {
+        Diamond: 4,
+        Onyx: 4
+      }
+    },
+    {
+      Points: 3,
+      Requirements: {
+        Emerald: 3,
+        Diamond: 3,
+        Sapphire: 3
+      }
+    },
+    {
+      Points: 3,
+      Requirements: {
+        Emerald: 3,
+        Sapphire: 3,
+        Ruby: 3
+      }
+    },
+    {
+      Points: 3,
+      Requirements: {
+        Diamond: 3,
+        Sapphire: 3,
+        Onyx: 3
+      }
+    }
+  ],
   NoblesToReveal: 3
 };
 
@@ -64,8 +141,23 @@ Splendor.prototype.Boards['4p'] = {
   NoblesToReveal: 5
 };
 
-Splendor.prototype.render = function (viewElement) {
+Splendor.prototype.initialize = function () {
+  console.log('initialize');
   var tokens = this.board.Tokens;
+  for (var tokenName in tokens) {
+    this.tokens[tokenName] = tokens[tokenName];
+  }
+  var noblesDeck = this.board.Nobles.slice();
+  for (var i = 0; i < this.board.NoblesToReveal; i++) {
+    var randomIndex = Math.floor(Math.random() * noblesDeck.length);
+    var randomNoble = noblesDeck.splice(randomIndex, 1)[0];
+    this.nobles.push(randomNoble);
+  }
+};
+
+Splendor.prototype.render = function (viewElement) {
+  console.log('render', this.tokens, this.nobles);
+  var tokens = this.tokens;
   var tokensElement = viewElement.querySelector('.splendor-tokens');
   while (tokensElement.firstChild) {
     tokensElement.removeChild(tokensElement.firstChild);
@@ -81,26 +173,28 @@ Splendor.prototype.render = function (viewElement) {
   }
   tokensElement.appendChild(tokensFragment);
 
-  var nobles = this.board.Nobles;
+  var nobles = this.nobles;
   var noblesElement = viewElement.querySelector('.splendor-nobles');
   while (noblesElement.firstChild) {
     noblesElement.removeChild(noblesElement.firstChild);
   }
   var noblesFragment = document.createDocumentFragment();
-  for (var i = 0; i < this.board.NoblesToReveal; i++) {
+  for (var i = 0; i < nobles.length; i++) {
+    var noble = nobles[i];
     var nobleElement = document.createElement('div');
     nobleElement.classList.add('tile');
     var noblePointsElement = document.createElement('div');
     noblePointsElement.classList.add('splendor-points');
-    noblePointsElement.textContent = '3';
+    noblePointsElement.textContent = noble.Points;
     nobleElement.appendChild(noblePointsElement);
     var nobleValueElement = document.createElement('div');
     nobleValueElement.classList.add('splendor-value');
-    for (var j = 0; j < 3; j++) {
+    var requiredCards = noble.Requirements;
+    for (var card in requiredCards) {
       var nobleValueItemElement = document.createElement('div');
       nobleValueItemElement.classList.add('value-card');
-      nobleValueItemElement.classList.add(['ruby','onyx','sapphire'][j]);
-      nobleValueItemElement.textContent = '3';
+      nobleValueItemElement.classList.add(card.toLowerCase());
+      nobleValueItemElement.textContent = requiredCards[card];
       nobleValueElement.appendChild(nobleValueItemElement);
     }
     nobleElement.appendChild(nobleValueElement);
