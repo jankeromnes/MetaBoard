@@ -54,4 +54,4 @@ Catan.prototype.Boards['5-6p'] = {
 
 Catan.prototype.render = function () {
 
-}
+};
