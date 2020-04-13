@@ -1,0 +1,8 @@
+ports:
+  - port: 3000
+    onOpen: open-preview
+
+tasks:
+  - name: Server
+    command: python3 -m http.server 3000
+  - name: Terminal
