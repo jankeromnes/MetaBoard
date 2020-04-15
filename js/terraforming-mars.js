@@ -30,7 +30,7 @@ TerraformingMars.prototype.Boards['Mars'] = {
       Step: 1,
       Goal: 14,
     },
-    Ocean: {
+    OceanTiles: {
       Start: 0,
       Step: 1,
       Goal: 9,
