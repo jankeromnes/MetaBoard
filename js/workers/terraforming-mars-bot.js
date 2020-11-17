@@ -14,3 +14,8 @@ function evaluateCardScore(card, game) {
   // TODO: evaluate card.tags
   return score;
 }
+
+// TODO: evaluate worth of resources/production (credits, steel, titanium, plants, etc.) as function of:
+// - estimated remaining generations
+// - state of global parameters
+// - all cards, or all unplayed/unseen cards
